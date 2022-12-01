@@ -1,0 +1,83 @@
+<% include ../partials/header.ejs %> 
+
+<% include ../partials/main_nav.ejs %> 
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+        <h1>Create New Incident Report</h1>
+        <title><%= title %></title>
+        
+        <br />
+        <!--Details of Creating a New Incident Report-->  
+        <p>This page is responsible to create a new incident reports.<p>
+        <p>To Add a New Incident, you will need to enter all the following fields: 
+          Case ID, The Date of the Incident, The Name of the Incident's Owner, and The Details of the Incident.
+          <strong>Please Note That All Fields Are Required.</strong></p>
+      
+          <form class="form" method="post">
+          <div class="from-group">
+            <label for="idTextField">CaseID:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="idTextField"
+              placeholder="Enter the CaseID:"
+              name="caseID"
+              required
+            />
+          </div>
+          
+          <div class="from-group">
+            <label for="nameTextField">Date:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nameTextField"
+              placeholder="Date of incident:"
+              name="date"
+              required
+            />
+          </div>
+  
+          <div class="from-group">
+            <label for="descTextField">Name:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="descTextField"
+              placeholder="Enter name of person: "
+              name="name"
+              required
+            />
+          </div>
+  
+          <div class="from-group">
+            <label for="priceTextField">Details:</label>
+            <textarea
+              type="text"
+              class="form-control"
+              id="priceTextField"
+              placeholder="Enter incident details: "
+              name="details"
+              required
+            ></textarea>
+          </div>
+  
+  
+          <button class="btn btn-primary" type="submit">
+            <i class="fa fa-check-square-o"></i>Submit
+          </button>
+  
+          <a href="/reports" class="btn btn-warning">
+            Cancel
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <% include ../partials/bottom_nav.ejs %>
+
+  <% include ../partials/footer.ejs %>
+  

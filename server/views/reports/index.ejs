@@ -1,0 +1,64 @@
+<% include ../partials/header.ejs %> 
+
+<% include ../partials/main_nav.ejs %> 
+
+<!-- MAIN CONTENT -->
+<div class="jumbotron">
+<div class="container">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-10">
+      <h3>Incident Reports</h3>
+      
+      <br />
+      <!-- Details of the table and how to submit new reports -->
+      <p>The information below is the current incident reports that have been submitted.<p>
+       <p> To add a new report, click <a href="/reports/add">here</a> or use the <strong>Create a Report</strong> button below.<br>
+          To edit a report, a report, use the Edit button.<br>
+          To delete a report, click the <strong>Delete</strong> button. This is instant, permanent, and will not ask for confirmation.</p>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+          <thead>
+            <tr>
+              <th>CaseID</th>
+              <th class="text-center">Date</th>
+              <th class="text-center">Name</th>
+              <th class="text-center">Details</th>
+              <th class="text-center"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Template Row -->
+            <% for (let count = 0; count < incident_reports.length; count++) { %>
+            <tr>
+              <td><%= incident_reports[count].caseID %></td>
+              <td class="text-center"><%= incident_reports[count].date %></td>
+              <td class="text-center"><%= incident_reports[count].name %></td>
+              <td class="text-center"><%= incident_reports[count].details %></td>
+
+              <td class="text-center">
+                <a href="/reports/edit/<%= incident_reports[count]._id %>" class="btn btn-primary" style="background-color: #f59e2e; border-color:#f59e2e;"
+                  ><i class="fa fa-plus"></i> Edit</a
+      >
+      <a href="/reports/delete/<%= incident_reports[count]._id %>" class="btn btn-warning btn-sm" style="background-color: #ff3e3e; color: white; border-color: #ff3e3e;">
+        <i class="fas fa-trash-alt"></i> Delete</a>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+  </main>
+  <a href="/reports/add" class="btn btn-primary"><i class="fa fa-plus"></i> Create a Report</a>
+
+      <div class="col-md-offset-1 col-md-10 text-center">
+        <ul class="pagination pagination-lg pager" id="myPager"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<% include ../partials/bottom_nav.ejs %>
+
+<% include ../partials/footer.ejs %>
+
