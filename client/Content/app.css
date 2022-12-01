@@ -20,7 +20,7 @@ footer{
 .nav-link:active {
     color: white;
 }
-navbar-text i:hover{
+.navbar-text i:hover{
   color: yellow;
 }
 label{
