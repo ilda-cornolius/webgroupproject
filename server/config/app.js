@@ -25,7 +25,7 @@ mongoose.connect(process.env.URI || DB.URI, {
 let mongoDB = mongoose.connection;
 mongoDB.on("error", console.error.bind(console, "Connection Error:"));
 mongoDB.once("open", () => {
-  console.log("Fine Team Database Connected.");
+  console.log("Fine Team Database Connected. Project Part 3 – Authentication Release");
 });
 
 // define routers
