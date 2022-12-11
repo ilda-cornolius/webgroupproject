@@ -23,6 +23,7 @@
               <th class="text-center">Date</th>
               <th class="text-center">Name</th>
               <th class="text-center">Details</th>
+              <th class="text-center">Status</th>
               <th class="text-center"></th>
             </tr>
           </thead>
@@ -34,6 +35,7 @@
               <td class="text-center"><%= incident_reports[count].date %></td>
               <td class="text-center"><%= incident_reports[count].name %></td>
               <td class="text-center"><%= incident_reports[count].details %></td>
+              <td class="text-center"><%= incident_reports[count].Status %></td>
 
               <td class="text-center">
                 <a href="/reports/edit/<%= incident_reports[count]._id %>" class="btn btn-primary" style="background-color: #f59e2e; border-color:#f59e2e;"
@@ -41,6 +43,21 @@
       >
       <a href="/reports/delete/<%= incident_reports[count]._id %>" class="btn btn-warning btn-sm" style="background-color: #ff3e3e; color: white; border-color: #ff3e3e;">
         <i class="fas fa-trash-alt"></i> Delete</a>
+
+
+        <div class="btn-group">
+          <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Status
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/reports/inprogress/<%= incident_reports[count]._id %>" id="1">In Progress</a></li>
+            <li><a class="dropdown-item" href="/reports/dispatched/<%= incident_reports[count]._id %>" id="2">Dispatched</a></li>
+            <li><a class="dropdown-item" href="/reports/closed/<%= incident_reports[count]._id %>" id="3">Closed</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+          </ul>
+        </div>
+
               </td>
             </tr>
             <% } %>

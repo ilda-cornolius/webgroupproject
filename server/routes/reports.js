@@ -38,6 +38,15 @@ router.get("/edit/:id",requireAuth, reportsController.displayEditPage);
 router.post("/edit/:id",requireAuth, reportsController.processEditPage);
 
 // GET - process the delete
-router.get("/delete/:id",requireAuth, reportsController.performDelete);
+router.get("/delete/:id", requireAuth, reportsController.performDelete);
+
+	// GET - change status to in progress
+    router.get("/inprogress/:id", requireAuth, reportsController.performInprogress);
+
+    // GET - change status to dispatched
+    router.get("/dispatched/:id", requireAuth, reportsController.performinDiapatched);
+    
+    // GET - change status to closed
+    router.get("/closed/:id",requireAuth, reportsController.performinClosed);
 
 module.exports = router;

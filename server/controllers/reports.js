@@ -77,7 +77,7 @@ module.exports.displayReports = (req, res, next) => {
       caseID: req.body.caseID,
       date: req.body.date,
       name: req.body.name,
-      details: req.body.details
+      details: req.body.details,
     });
   
     report.updateOne({_id: id}, updatereport, (err) => {
@@ -99,4 +99,55 @@ module.exports.displayReports = (req, res, next) => {
         res.redirect("/reports");
       }
     });
-  }
+}
+  
+module.exports.performInprogress = (req, res, next) => {
+  let id = req.params.id;
+  
+    let updatereport = report({
+      _id: id,
+      Status:"In progress",
+      
+    });
+
+    report.updateOne({_id: id}, updatereport, (err) => {
+      
+        // refresh the report list
+        res.redirect("/reports");
+      
+    });
+}
+
+module.exports.performinDiapatched = (req, res, next) => {
+  let id = req.params.id;
+  
+    let updatereport = report({
+      _id: id,
+      Status:"Diapatched",
+      
+    });
+
+    report.updateOne({_id: id}, updatereport, (err) => {
+      
+        // refresh the report list
+        res.redirect("/reports");
+      
+    });
+}
+
+module.exports.performinClosed = (req, res, next) => {
+  let id = req.params.id;
+  
+    let updatereport = report({
+      _id: id,
+      Status:"Closed",
+      
+    });
+
+    report.updateOne({_id: id}, updatereport, (err) => {
+      
+        // refresh the report list
+        res.redirect("/reports");
+      
+    });
+}
