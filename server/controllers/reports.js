@@ -53,21 +53,28 @@ module.exports.displayReports = (req, res, next) => {
   module.exports.displayEditPage = (req, res, next) => {
 
     let id = req.params.id; //id of actual object
+
+      report.findById(id, (err, itemtoedit) => {
+        if (err) {
+          console.log(err);
+          res.end(err);
+        } else {
+          if (itemtoedit.Status=="Closed") {
+            res.redirect("/reports");
+            
+           } else {
+            //show the edit view
+            res.render("reports/edit", {
+              title: "Edit Incident Report",
+              incident_reports: itemtoedit,
+              displayName: req.user ? req.user.displayName : ''
+            });
+          }
+        }
+      });
+    }
   
-    report.findById(id, (err, itemtoedit) => {
-      if (err) {
-        console.log(err);
-        res.end(err);
-      } else {
-        //show the edit view
-        res.render("reports/edit", {
-          title: "Edit Incident Report",
-          incident_reports: itemtoedit,
-          displayName: req.user ? req.user.displayName : ''
-        });
-      }
-    });
-  }
+  
 
   module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id;
@@ -88,7 +95,8 @@ module.exports.displayReports = (req, res, next) => {
     });
   }
 
-  module.exports.performDelete = (req, res, next) => {
+module.exports.performDelete = (req, res, next) => {
+  
     let id = req.params.id;
     report.remove({ _id: id }, (err) => {
       if (err) {
