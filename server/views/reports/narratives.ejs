@@ -1,0 +1,23 @@
+<% include ../partials/main_nav.ejs %>
+<% include ../partials/header.ejs %>
+
+<h3> <%= title %></h3>
+<form class="form" method="post">
+<input
+type="textarea"
+class="form-control"
+id="IdTextField"
+placeholder="Narrative"
+name="Narrative"
+value="<%= incident_reports.Narrative %>"
+required
+/>
+<button type="submit" class="btn btn-primary" style="margin-top: 5px;">
+    <i class="fa fa-check-square-o"></i> Submit
+  </button>
+</form>
+
+<% include ../partials/bottom_nav.ejs %>
+
+<% include ../partials/footer.ejs %>
+

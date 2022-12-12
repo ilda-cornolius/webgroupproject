@@ -48,5 +48,14 @@ router.get("/delete/:id", requireAuth, reportsController.performDelete);
     
     // GET - change status to closed
     router.get("/closed/:id",requireAuth, reportsController.performinClosed);
+    
+
+    // GET - display narratives page
+router.get("/narratives/:id", requireAuth, reportsController.displayNarrativesPage);
+    
+// GET - process narratives page
+router.post("/inprogress/:id", requireAuth, reportsController.processNarrativesPage);
+router.post("/dispatched/:id", requireAuth, reportsController.processNarrativesPage);
+router.post("/closed/:id", requireAuth, reportsController.processNarrativesPage);
 
 module.exports = router;

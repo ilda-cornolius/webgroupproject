@@ -111,7 +111,23 @@ module.exports.performDelete = (req, res, next) => {
   
 module.exports.performInprogress = (req, res, next) => {
   let id = req.params.id;
-  
+
+  report.findById(id, (err, itemtoedit) => {
+      
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+        //show the edit view
+        res.render("reports/narratives", {
+          title: "Incident Narrative",
+          incident_reports: itemtoedit,
+          displayName: req.user ? req.user.displayName : ''
+        });
+      }
+
+  })
+
     let updatereport = report({
       _id: id,
       Status:"In progress",
@@ -119,32 +135,69 @@ module.exports.performInprogress = (req, res, next) => {
     });
 
     report.updateOne({_id: id}, updatereport, (err) => {
-      
-        // refresh the report list
-        res.redirect("/reports");
-      
+      if (err) {
+        console.log(err);
+        res.end(err);
+      } else {
+       
+      }
     });
 }
 
 module.exports.performinDiapatched = (req, res, next) => {
   let id = req.params.id;
+
+  report.findById(id, (err, itemtoedit) => {
+      
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+        //show the edit view
+        res.render("reports/narratives", {
+          title: "Incident Narrative",
+          incident_reports: itemtoedit,
+          displayName: req.user ? req.user.displayName : ''
+        });
+      }
+
+  })
   
     let updatereport = report({
       _id: id,
-      Status:"Diapatched",
+      Status:"Dispatched",
       
     });
 
     report.updateOne({_id: id}, updatereport, (err) => {
-      
-        // refresh the report list
-        res.redirect("/reports");
+      if (err) {
+        console.log(err);
+        res.end(err);
+      } else {
+    
+      }
       
     });
 }
 
 module.exports.performinClosed = (req, res, next) => {
   let id = req.params.id;
+
+  report.findById(id, (err, itemtoedit) => {
+      
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+        //show the edit view
+        res.render("reports/narratives", {
+          title: "Incident Narrative",
+          incident_reports: itemtoedit,
+          displayName: req.user ? req.user.displayName : ''
+        });
+      }
+
+  })
   
     let updatereport = report({
       _id: id,
@@ -154,8 +207,54 @@ module.exports.performinClosed = (req, res, next) => {
 
     report.updateOne({_id: id}, updatereport, (err) => {
       
-        // refresh the report list
-        res.redirect("/reports");
+      if (err) {
+        console.log(err);
+        res.end(err);
+      } else {
+        
+      }
       
     });
+}
+
+
+module.exports.displayNarrativesPage = (req, res, next) => {
+
+  let id = req.params.id; //id of actual object
+
+  report.findById(id, (err, itemtoedit) => {
+      
+      if (err) {
+        console.log(err);
+        res.end(err);
+      } else {
+          //show the edit view
+          res.render("reports/narratives", {
+            title: "Incident Narrative",
+            incident_reports: itemtoedit,
+            displayName: req.user ? req.user.displayName : ''
+          });
+        }
+
+    })
+}
+  
+module.exports.processNarrativesPage = (req, res, next) => {
+  let id = req.params.id;
+
+  let updatereport = report({
+    _id: id,
+    Narrative: req.body.Narrative,
+   
+  });
+
+  report.updateOne({_id: id}, updatereport, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      // refresh the report list
+      res.redirect("/reports");
+    }
+  });
 }
