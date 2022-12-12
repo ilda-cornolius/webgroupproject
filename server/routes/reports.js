@@ -52,10 +52,13 @@ router.get("/delete/:id", requireAuth, reportsController.performDelete);
 
     // GET - display narratives page
 router.get("/narratives/:id", requireAuth, reportsController.displayNarrativesPage);
-    
-// GET - process narratives page
-router.post("/inprogress/:id", requireAuth, reportsController.processNarrativesPage);
+
+    // GET - display solution page
+    router.post("/inprogress/:id", requireAuth, reportsController.processNarrativesPage);
 router.post("/dispatched/:id", requireAuth, reportsController.processNarrativesPage);
-router.post("/closed/:id", requireAuth, reportsController.processNarrativesPage);
+//router.post("/closed/:id", requireAuth, reportsController.processNarrativesPage);
+
+// GET - process solution page
+router.post("/solution/:id", requireAuth, reportsController.processSolutionPage);
 
 module.exports = router;

@@ -8,7 +8,8 @@ let Report = mongoose.Schema(
     name: String,
     details: String,
     Status: String,
-    Narrative:String,
+    Narrative: String,
+    Resolution: String
   },
   {
     collection: "reports",

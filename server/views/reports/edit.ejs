@@ -57,6 +57,26 @@
             required
           />
         </div>
+<br>
+        <div class="form-group">
+          <label for="PriceTextField">Current Status</label>
+          <p><%= incident_reports.Status %></p>
+            
+          
+        </div>
+
+        <div class="form-group">
+          <label for="PriceTextField">Resolution Field</label>
+          <input
+            type="text"
+            class="form-control"
+            id="rsTextField"
+            placeholder="Resolution Field"
+            name="Resolution"
+            value="<%= incident_reports.Resolution %>"
+            required
+          />
+        </div>
 
         <button type="submit" class="btn btn-primary" style="margin-top: 5px;">
           <i class="fa fa-check-square-o"></i> Submit

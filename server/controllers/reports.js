@@ -85,6 +85,7 @@ module.exports.displayReports = (req, res, next) => {
       date: req.body.date,
       name: req.body.name,
       details: req.body.details,
+      Resolution: req.body.Resolution
     });
   
     report.updateOne({_id: id}, updatereport, (err) => {
@@ -190,8 +191,8 @@ module.exports.performinClosed = (req, res, next) => {
       res.end(err);
     } else {
         //show the edit view
-        res.render("reports/narratives", {
-          title: "Incident Narrative",
+        res.render("reports/incidentSolution", {
+          title: " Incident Resolution",
           incident_reports: itemtoedit,
           displayName: req.user ? req.user.displayName : ''
         });
@@ -199,23 +200,24 @@ module.exports.performinClosed = (req, res, next) => {
 
   })
   
-    let updatereport = report({
-      _id: id,
-      Status:"Closed",
-      
-    });
+  let updatereport = report({
+    _id: id,
+    Status:"Closed",
+    
+  });
 
-    report.updateOne({_id: id}, updatereport, (err) => {
+  report.updateOne({_id: id}, updatereport, (err) => {
+    
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
       
-      if (err) {
-        console.log(err);
-        res.end(err);
-      } else {
-        
-      }
-      
-    });
+    }
+    
+  });
 }
+
 
 
 module.exports.displayNarrativesPage = (req, res, next) => {
@@ -245,6 +247,47 @@ module.exports.processNarrativesPage = (req, res, next) => {
   let updatereport = report({
     _id: id,
     Narrative: req.body.Narrative,
+   
+  });
+
+  report.updateOne({_id: id}, updatereport, (err) => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      // refresh the report list
+      res.redirect("/reports");
+    }
+  });
+}
+
+module.exports.displaySolutionPage = (req, res, next) => {
+
+  let id = req.params.id; //id of actual object
+
+  report.findById(id, (err, itemtoedit) => {
+      
+      if (err) {
+        console.log(err);
+        res.end(err);
+      } else {
+          //show the edit view
+          res.render("reports/incidentSolution", {
+            title: " Incident Resolution",
+            incident_reports: itemtoedit,
+            displayName: req.user ? req.user.displayName : ''
+          });
+        }
+
+    })
+}
+  
+module.exports.processSolutionPage = (req, res, next) => {
+  let id = req.params.id;
+
+  let updatereport = report({
+    _id: id,
+    Resolution: req.body.Resolution,
    
   });
 
