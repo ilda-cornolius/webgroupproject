@@ -46,30 +46,8 @@
                 <a href="/reports/edit/<%= incident_reports[count]._id %>" class="btn btn-primary" style="background-color: #f59e2e; border-color:#f59e2e;"
                   ><i class="fa fa-plus"></i> Edit</a
       >
-      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" style="background-color: #ff3e3e; color: white; border-color: #ff3e3e;">
+      <a href="/reports/delete/<%= incident_reports[count]._id %>" class="btn btn-warning btn-sm" style="background-color: #ff3e3e; color: white; border-color: #ff3e3e;">
         <i class="fas fa-trash-alt"></i> Delete</a>
-       </button>
-
-    <!-- Modal -->
-    <div class="modal fade " id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Please confirm the deletion of this incident report!<br>
-            Once you confirm, this report will be permanently deleted.
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
-            <a href="/reports/delete/<%= incident_reports[count]._id %>" class="btn btn-primary btn-sm" 
-              style="background-color: #ff3e3e; color: white; border-color: #ff3e3e;">Confirm Delete</a></button>
-          </div>
-        </div>
-      </div>
-    </div>
 
         <div class="btn-group">
           <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="overflow: auto;">
