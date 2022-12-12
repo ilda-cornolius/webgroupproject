@@ -190,32 +190,35 @@ module.exports.performinClosed = (req, res, next) => {
       console.log(err);
       res.end(err);
     } else {
-        //show the edit view
+      if (itemtoedit.Resolution ==null) {
         res.render("reports/incidentSolution", {
           title: " Incident Resolution",
           incident_reports: itemtoedit,
           displayName: req.user ? req.user.displayName : ''
         });
+        
+      } else {
+      
+        let updatereport = report({
+          _id: id,
+          Status: "Closed",
+        
+        });
+    
+        report.updateOne({ _id: id }, updatereport, (err) => {
+        
+          if (err) {
+            console.log(err);
+            res.end(err);
+          } else {
+            res.redirect("/reports");
+          }  
+        });
+        }
       }
 
-  })
   
-  let updatereport = report({
-    _id: id,
-    Status:"Closed",
-    
-  });
-
-  report.updateOne({_id: id}, updatereport, (err) => {
-    
-    if (err) {
-      console.log(err);
-      res.end(err);
-    } else {
-      
-    }
-    
-  });
+  })
 }
 
 
@@ -287,6 +290,7 @@ module.exports.processSolutionPage = (req, res, next) => {
 
   let updatereport = report({
     _id: id,
+    Status: "Closed",
     Resolution: req.body.Resolution,
    
   });
