@@ -35,12 +35,12 @@
           <tbody>
             <!-- Template Row -->
             <% for (let count = 0; count < incident_reports.length; count++) { %>
-            <tr>
-              <td><%= incident_reports[count].caseID %></td>
-              <td class="text-center"><%= incident_reports[count].date %></td>
-              <td class="text-center"><%= incident_reports[count].name %></td>
-              <td class="text-center"><%= incident_reports[count].details %></td>
-              <td class="text-center"><%= incident_reports[count].Status %></td>
+            <tr data-status="<%= incident_reports[count].Status %>">
+              <td><span><%= incident_reports[count].caseID %></span></td>
+              <td class="text-center"><span><%= incident_reports[count].date %></span></td>
+              <td class="text-center"><span><%= incident_reports[count].name %></span></td>
+              <td class="text-center"><span><%= incident_reports[count].details %></span></td>
+              <td class="text-center"><span><%= incident_reports[count].Status %></span></td>
 
               <td class="text-center">
                 <a href="/reports/edit/<%= incident_reports[count]._id %>" class="btn btn-primary" style="background-color: #f59e2e; border-color:#f59e2e;"
@@ -61,7 +61,7 @@
         </div>
 
               </td>
-              <td class="text-center"><%= incident_reports[count].Resolution %></td>
+              <td class="text-center"><span><%= incident_reports[count].Resolution %></span></td>
             </tr>
             <% } %>
           </tbody>
