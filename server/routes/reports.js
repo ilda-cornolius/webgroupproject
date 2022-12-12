@@ -59,6 +59,6 @@ router.post("/dispatched/:id", requireAuth, reportsController.processNarrativesP
 //router.post("/closed/:id", requireAuth, reportsController.processNarrativesPage);
 
 // GET - process solution page
-router.post("/solution/:id", requireAuth, reportsController.processSolutionPage);
+router.post("/closed/:id", requireAuth, reportsController.processSolutionPage);
 
 module.exports = router;
