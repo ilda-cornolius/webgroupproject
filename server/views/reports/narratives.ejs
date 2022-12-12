@@ -1,5 +1,6 @@
 <% include ../partials/main_nav.ejs %>
 <% include ../partials/header.ejs %>
+<<<<<<< HEAD
 
 <h3> <%= title %></h3>
 <form class="form" method="post">
@@ -16,6 +17,38 @@ required
     <i class="fa fa-check-square-o"></i> Submit
   </button>
 </form>
+=======
+<div class="container">
+<div class="row">
+  <div class="col-md-offset-1 col-md-10">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <h1><%= title %></h1>
+      <p>Provide a narrative about this incident.</p>
+      <form class="form" method="post">
+        <div class="form-group">
+          <label for="IdTextField">Narrative</label>
+          <form class="form" method="post">
+            <input
+            type="textarea"
+            class="form-control"
+            id="IdTextField"
+            placeholder="Narrative"
+            name="Narrative"
+            value="<%= incident_reports.Narrative %>"
+            required
+            />
+          </div>
+        <button type="submit" class="btn btn-primary" style="margin-top: 5px;">
+          <i class="fa fa-check-square-o"></i> Submit
+        </button>
+        <a href="/reports" class="btn btn-warning" style="margin-top: 5px;"><i class="fa fa-undo"></i> Cancel</a
+        >
+      </form>
+    </div>
+  </div>
+</div>
+>>>>>>> adedbd4438388a22e400870e2c388c2a3c973a81
 
 <% include ../partials/bottom_nav.ejs %>
 

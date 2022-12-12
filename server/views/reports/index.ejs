@@ -18,8 +18,8 @@
           To <strong>edit</strong> a report, use the Edit button.<br>
           To delete a report, click the <strong>Delete</strong> button. This is instant, permanent, and will not ask for confirmation.<br>
         Note: When the <strong>status</strong> of the report is <strong>closed</strong>, you will not be able to edit the report.</p>
-
-      <div class="table-responsive">
+        <a href="/reports/add" class="btn btn-primary"><i class="fa fa-plus"></i> Create a Report</a>  
+      <div class="table-responsive" style="margin-top: 20px;">
         <table class="table table-bordered table-striped table-hover">
           <thead>
             <tr>
@@ -58,8 +58,6 @@
             <li><a class="dropdown-item" href="/reports/inprogress/<%= incident_reports[count]._id %>" id="1">In Progress</a></li>
             <li><a class="dropdown-item" href="/reports/dispatched/<%= incident_reports[count]._id %>" id="2">Dispatched</a></li>
             <li><a class="dropdown-item" href="/reports/closed/<%= incident_reports[count]._id %>" id="3">Closed</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Separated link</a></li>
           </ul>
         </div>
 
@@ -71,7 +69,6 @@
         </table>
       </div>
   </main>
-  <a href="/reports/add" class="btn btn-primary"><i class="fa fa-plus"></i> Create a Report</a>
 
       <div class="col-md-offset-1 col-md-10 text-center">
         <ul class="pagination pagination-lg pager" id="myPager"></ul>
